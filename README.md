@@ -20,6 +20,10 @@ Built using the MERN stack with JWT authentication and image upload support.
 
 ---
 
+## 📸 Project Preview
+
+![SmartConfess Preview](./screenshots/smartconfess-home.png)
+
 ## 🛠 Tech Stack
 
 ### Frontend
