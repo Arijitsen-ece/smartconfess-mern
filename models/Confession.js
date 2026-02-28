@@ -1,14 +1,48 @@
 import mongoose from "mongoose";
 
-const confessionSchema = new mongoose.Schema(
+const commentSchema = mongoose.Schema(
   {
-    text: { type: String, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
+      ref: "User",
+    },
+    text: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Confession", confessionSchema);
+const confessionSchema = mongoose.Schema(
+  {
+    text: {
+      type: String,
+      required: true,
+    },
+
+    image: {
+      type: String, // will store image filename
+    },
+
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+
+    comments: [commentSchema],
+  },
+  { timestamps: true }
+);
+
+const Confession = mongoose.model("Confession", confessionSchema);
+
+export default Confession;
